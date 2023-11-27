@@ -45,6 +45,15 @@
             border-radius: 5px;
         }
 
+        /* Set background color for Dashboard and About buttons */
+        nav a[href="#superstore"],
+        nav a[href="#regional"],
+        nav a[href="#about"],
+        nav a[href="#introduction"] {
+            background-color: #D52F2E;
+            color: white;
+        }
+
         #tableauContainer {
             margin: 20px;
             width: 100%; /* Make the dashboard fit the window width */
@@ -65,14 +74,6 @@
             text-align: left;
             margin: 0; /* Remove default margin */
         }
-
-        /* Set background color for Dashboard and About buttons */
-        nav a[href="#superstore"],
-        nav a[href="#regional"],
-        nav a[href="#about"] {
-            background-color: #D52F2E;
-            color: white;
-        }
     </style>
 </head>
 <body>
@@ -83,11 +84,21 @@
     </header>
 
     <nav>
+        <a href="#introduction">Introduction</a>
         <a href="#superstore">Superstore Dashboard</a>
         <a href="#regional">Regional Dashboard</a>
         <a href="#about">About</a>
         <!-- Add more navigation links as needed -->
     </nav>
+
+    <section id="introduction">
+        <h2>Welcome to Quandatics Demo Website</h2>
+        <p>Explore and visualize data with our interactive dashboards. Gain valuable insights from the Superstore and Regional dashboards below.</p>
+		<p>Kindly use the following <b>ID</b> and <b>Password</b> to access the demo dashboard below:</p>
+		<p><b>ID</b> : demo</p>
+		<p><b>Password</b> : 12345678</p>        
+		<!-- Add more content about the introduction, if needed -->
+    </section>
 
     <section id="superstore">
         <h2>Superstore Dashboard</h2>
