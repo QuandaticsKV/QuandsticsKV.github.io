@@ -17,24 +17,34 @@
         header {
             background-color: white;
             text-align: left;
-            padding: 1em;
+            padding: 0em;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease; /* Add smooth transition effect */
+        }
+
+        header.scrolled {
+            background-color: #f5f5f5; /* Change background color on scroll */
         }
 
         header img {
-            height: 50px; /* Adjust the height as needed */
+            height: 50px;
         }
 
         header .empty-block {
-            flex-grow: 1; /* Empty block to fill remaining space */
+            flex-grow: 1;
         }
 
         nav {
             background-color: #f5f5f5;
             padding: 1em;
             text-align: left;
+            margin-top: 80px;
         }
 
         nav a {
@@ -56,7 +66,7 @@
 
         #tableauContainer {
             margin: 20px;
-            width: 100%; /* Make the dashboard fit the window width */
+            width: 100%;
         }
 
         section {
@@ -68,17 +78,32 @@
             color: white;
             text-align: center;
             padding: 1em;
+            position: relative;
+            margin-top: 80px;
         }
 
         footer p {
             text-align: left;
-            margin: 0; /* Remove default margin */
+            margin: 0;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var header = document.querySelector("header");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
-        <img src="https://quandatics.com/wp-content/uploads/2020/03/quandatics.png" alt="Logo"> <!-- Replace with the actual URL of your logo -->
+        <img src="https://quandatics.com/wp-content/uploads/2020/03/quandatics.png" alt="Logo">
         <h1>Quandatics Demo Website</h1>
         <div class="empty-block"></div>
     </header>
@@ -88,32 +113,26 @@
         <a href="#superstore">Superstore Dashboard</a>
         <a href="#regional">Regional Dashboard</a>
         <a href="#about">About</a>
-        <!-- Add more navigation links as needed -->
     </nav>
 
     <section id="introduction">
         <h2>Welcome to Quandatics Demo Website</h2>
         <p>Explore and visualize data with our interactive dashboards. Gain valuable insights from the Superstore and Regional dashboards below.</p>
-		<p>Kindly use the following <b>ID</b> and <b>Password</b> to access the demo dashboard below:</p>
-		<p><b>ID</b> : demo</p>
-		<p><b>Password</b> : 12345678</p>        
-		<!-- Add more content about the introduction, if needed -->
+        <p>Kindly use the following <b>ID</b> and <b>Password</b> to access the demo dashboard below:</p>
+        <p><b>ID</b> : demo</p>
+        <p><b>Password</b> : 12345678</p>        
     </section>
 
     <section id="superstore">
         <h2>Superstore Dashboard</h2>
-        <!-- Container for your updated Tableau Superstore dashboard -->
         <div id="tableauContainerSuperstore">
-            <!-- Tableau Viz for the Superstore dashboard will be rendered here -->
-            <tableau-viz id='tableau-viz-superstore' src='https://tableau-demo.quandatics.com/views/Superstore/Overview' width='100%' height='683' toolbar='bottom'></tableau-viz>
+            <tableau-viz id='tableau-viz' src='https://tableau-demo.quandatics.com/views/SampleDashboard/Overview' width='100%' height='683' toolbar='bottom'></tableau-viz>
         </div>
     </section>
 
     <section id="regional">
         <h2>Regional Dashboard</h2>
-        <!-- Container for your Tableau regional dashboard -->
         <div id="tableauContainerRegional">
-            <!-- Tableau Viz for the regional dashboard will be rendered here -->
             <tableau-viz id='tableau-viz-regional' src='https://tableau-demo.quandatics.com/views/Regional/Obesity' width='100%' height='524' toolbar='bottom'></tableau-viz>
         </div>
     </section>
@@ -121,7 +140,6 @@
     <section id="about">
         <h2>About Us</h2>
         <p>Welcome to our data science website! This is a place where we explore and visualize data to gain valuable insights.</p>
-        <!-- Add more content about your data science projects, team, etc. -->
     </section>
 
     <footer>
